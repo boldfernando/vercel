@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "build": "pnpm clear && tsc -b",
-    "clear": "rm -rf *.js *.d.ts *.js.map tsconfig.tsbuildinfo",
+    "clear": "node -e \"['tsconfig.tsbuildinfo'].forEach(f => { try { require('fs').rmSync(f, { recursive: true, force: true }); } catch {} })\"",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },

@@ -65,6 +65,21 @@ export function spawnTracked(
   return child;
 }
 
+export function isProcessAlive(pid: number): boolean {
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function isProcessAlreadyGoneError(err: any): boolean {
+  if (!err) return true;
+  const msg = String(err.message || err.stderr || err.stdout || '');
+  return msg.includes('not found') || msg.includes('nao encontrado') || msg.includes('ESRCH') || msg.includes('exit code 128');
+}
+
 /**
  * Cross-platform process tree termination (E2E-020)
  * On Windows: uses `taskkill /PID <pid> /T /F`
@@ -74,30 +89,39 @@ export async function terminateProcessTree(pid: number): Promise<void> {
   if (process.platform === 'win32') {
     try {
       await execFileAsync('taskkill', ['/PID', String(pid), '/T', '/F']);
-    } catch {
-      // Process already exited
+    } catch (err) {
+      if (!isProcessAlreadyGoneError(err)) {
+        throw err;
+      }
     }
-    return;
-  }
-
-  try {
-    process.kill(-pid, 'SIGTERM');
-  } catch {
+  } else {
     try {
-      process.kill(pid, 'SIGTERM');
-    } catch {}
+      process.kill(-pid, 'SIGTERM');
+    } catch {
+      try {
+        process.kill(pid, 'SIGTERM');
+      } catch {}
+    }
+
+    await new Promise(r => setTimeout(r, 150));
+
+    if (isProcessAlive(pid)) {
+      try {
+        process.kill(-pid, 'SIGKILL');
+      } catch {
+        try {
+          process.kill(pid, 'SIGKILL');
+        } catch {}
+      }
+    }
   }
 
-  // Brief pause to allow graceful termination
-  await new Promise(r => setTimeout(r, 150));
-
-  try {
-    process.kill(-pid, 'SIGKILL');
-  } catch {
-    try {
-      process.kill(pid, 'SIGKILL');
-    } catch {}
+  // Ensure process is dead before deleting from tracking registry
+  if (isProcessAlive(pid)) {
+    throw new Error(`[E2E-020] Process ${pid} survived teardown procedure!`);
   }
+
+  activeSubprocesses.delete(pid);
 }
 
 /**

@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-08-04T15:25:03.532Z",
+  "totalProjects": 8,
+  "projects": [
+    {
+      "name": "blitz",
+      "relativePath": "examples/blitzjs/vitest.config.ts",
+      "type": "example",
+      "isExcludedFromRoot": true
+    },
+    {
+      "name": "login-not-logged-in",
+      "relativePath": "packages/cli/evals/evals/login-not-logged-in/vitest.config.ts",
+      "type": "eval",
+      "isExcludedFromRoot": true
+    },
+    {
+      "name": "login-whoami",
+      "relativePath": "packages/cli/evals/evals/login-whoami/vitest.config.ts",
+      "type": "eval",
+      "isExcludedFromRoot": true
+    },
+    {
+      "name": "vercel",
+      "relativePath": "packages/cli/vitest.config.mts",
+      "type": "package",
+      "isExcludedFromRoot": false
+    },
+    {
+      "name": "@vercel/cli-auth",
+      "relativePath": "packages/cli-auth/vitest.config.mts",
+      "type": "package",
+      "isExcludedFromRoot": false
+    },
+    {
+      "name": "@vercel/client",
+      "relativePath": "packages/client/vitest.config.mts",
+      "type": "package",
+      "isExcludedFromRoot": false
+    },
+    {
+      "name": "blitz-v2",
+      "relativePath": "packages/static-build/test/fixtures/blitz-v2/vitest.config.ts",
+      "type": "fixture",
+      "isExcludedFromRoot": true
+    },
+    {
+      "name": "vercel-monorepo",
+      "relativePath": "vitest.config.mts",
+      "type": "workspace-root",
+      "isExcludedFromRoot": false
+    }
+  ]
+}

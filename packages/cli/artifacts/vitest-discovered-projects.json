@@ -1,0 +1,24 @@
+{
+  "discoveredAt": "2026-08-04T15:20:52.996Z",
+  "totalProjects": 3,
+  "projects": [
+    {
+      "name": "login-not-logged-in",
+      "relativePath": "evals/evals/login-not-logged-in/vitest.config.ts",
+      "type": "eval",
+      "isExcludedFromRoot": true
+    },
+    {
+      "name": "login-whoami",
+      "relativePath": "evals/evals/login-whoami/vitest.config.ts",
+      "type": "eval",
+      "isExcludedFromRoot": true
+    },
+    {
+      "name": "vercel",
+      "relativePath": "vitest.config.mts",
+      "type": "workspace-root",
+      "isExcludedFromRoot": false
+    }
+  ]
+}

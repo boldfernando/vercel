@@ -1,12 +1,12 @@
 [**@vercel/functions**](../../README.md)
 
-***
+---
 
 # Function: getCache()
 
 > **getCache**(`cacheOptions?`): [`RuntimeCache`](../interfaces/RuntimeCache.md)
 
-Defined in: [packages/functions/src/cache/index.ts:33](https://github.com/vercel/vercel/blob/main/packages/functions/src/cache/index.ts#L33)
+Defined in: [packages/functions/src/cache/index.ts:33](https://github.com/boldfernando/vercel/blob/main/packages/functions/src/cache/index.ts#L33)
 
 Retrieves the Vercel Runtime Cache.
 
