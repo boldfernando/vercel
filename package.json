@@ -75,6 +75,10 @@
     "arrowParens": "avoid"
   },
   "pnpm": {
-    "neverBuiltDependencies": []
+    "neverBuiltDependencies": [],
+    "overrides": {
+      "vitest": "2.1.4",
+      "@vitest/*": "2.1.4"
+    }
   }
 }

@@ -14,13 +14,15 @@
       "outputs": ["dist/**"]
     },
     "vitest-unit": {
-      "dependsOn": [],
-      "inputs": ["src/**/*.ts", "test/**/*.ts", "package.json", "vitest.config.mts"],
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "vitest.config.*", "vitest.setup.*", "tsconfig*.json"],
+      "outputs": ["coverage/**"],
       "outputLogs": "new-only"
     },
     "vitest-unit-node-24": {
-      "dependsOn": [],
-      "inputs": ["src/**/*.ts", "test/**/*.ts", "package.json", "vitest.config.mts"],
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "vitest.config.*", "vitest.setup.*", "tsconfig*.json"],
+      "outputs": ["coverage/**"],
       "outputLogs": "new-only"
     },
     "vitest-run": {
