@@ -27,7 +27,9 @@ export default defineConfig({
       '**/cypress/**',
       '**/.{idea,git,cache,output,temp}/**',
       '**/{karma,rollup,webpack,vite,vitest,ava,babel,nyc,cypress,tsup,build}.config.*',
-      // some artifacts in the fixtures have spec files that we're not using
+      // fixture vitest configs and spec files in test fixtures
+      '**/test/fixtures/**',
+      '**/fixtures/**/vitest.config.*',
       '**/*.spec.js',
     ],
   },
