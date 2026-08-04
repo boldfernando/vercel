@@ -14,11 +14,13 @@
       "outputs": ["dist/**"]
     },
     "vitest-unit": {
-      "dependsOn": ["build"],
+      "dependsOn": [],
+      "inputs": ["src/**/*.ts", "test/**/*.ts", "package.json", "vitest.config.mts"],
       "outputLogs": "new-only"
     },
     "vitest-unit-node-24": {
-      "dependsOn": ["build"],
+      "dependsOn": [],
+      "inputs": ["src/**/*.ts", "test/**/*.ts", "package.json", "vitest.config.mts"],
       "outputLogs": "new-only"
     },
     "vitest-run": {
